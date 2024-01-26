@@ -2,7 +2,9 @@
 import type { Icons } from "@components/Icon/index.astro";
 import Text from "@components/Text/index.astro";
 import Icon from "@components/Icon/index.astro";
+import Link from "@components/Link/index.astro";
 
+// TODO: Talvez mudar isso para um arquivo próprio seja melhor, talvez um arquivo de configuração, como json, ou arquivo no mesmo nível desse diretório, como constants.ts
 type Option = {
   label: string;
   href: string;
@@ -56,30 +58,35 @@ const contacts: Contact[] = [
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class='flex flex-col items-center justify-center h-72 gap-10'>
-  <ul class='flex gap-5'>
+<footer
+  class='relative bottom-0 flex flex-col flex-wrap items-center justify-center h-72 gap-10'
+>
+  <!-- Opções de navegação -->
+  <ul class='flex flex-wrap gap-5 justify-center'>
     {
       footerOptions.map(({ href, label }) => (
         <li>
-          <a href={href}>
-            <Text>{label}</Text>
-          </a>
+          <Link href={href}>{label}</Link>
         </li>
       ))
     }
   </ul>
+
+  <!-- Icones -->
   <ul class='flex gap-5'>
     {
       contacts.map(({ href, icon }) => (
         <li>
-          <a href={href} target="_blank">
+          <Link href={href} target='_blank'>
             <Icon name={icon} />
-          </a>
+          </Link>
         </li>
       ))
     }
   </ul>
+
+  <!-- Data -->
   <Text>
     {`© ${currentYear} Einstein Floripa`}
   </Text>
-</>
+</footer>
