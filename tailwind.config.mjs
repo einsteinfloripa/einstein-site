@@ -1,37 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: "jit",
-  purge: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: false,
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Roboto', 'sans-serif'],
-      },
-      rotate: {
-        270: "270deg",
-      },
-      minHeight: {
-        0: "0",
-        "1/4": "25%",
-        "1/2": "50%",
-        "3/4": "75%",
-        full: "100%",
+        roboto: ["Roboto", "sans-serif"],
       },
       backgroundImage: (theme) => ({
         "hero-pattern": "url('/images/Somos-o-Einstein-Floripa.jpg')",
         "aboutbg-pattern": "url('/images/bgabout.jpg')",
         "about-pattern": "url('/images/sobre-nos.jpg')",
         "home-pattern": "url('/images/home.jpg')",
-        "jogo": "url('/images/o-jogo.png')",
+        jogo: "url('/images/o-jogo.png')",
       }),
-      borderRadius: {
-        lg: "10px",
-      },
       colors: {
+        primary: '#030930',
         blue: {
           DEFAULT: "#0185C3",
           50: "#ceebf1",
@@ -42,7 +25,6 @@ module.exports = {
           500: "#4c7ec0",
           600: "#06125F",
           700: "#0095B6",
-          800: "#030930",
           900: "#011e30",
         },
         "light-blue": {

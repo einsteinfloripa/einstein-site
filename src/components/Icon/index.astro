@@ -1,0 +1,36 @@
+---
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { tv, type VariantProps } from "tailwind-variants";
+
+const icon = tv({
+  base: "text-primary",
+  variants: {
+    size: {
+      sm: "text-xl",
+      md: "text-2xl",
+      lg: "text-3xl",
+    },
+  },
+  defaultVariants: {
+    size: "sm",
+  },
+});
+const icons = {
+  instagram: FaInstagram,
+  linkedin: FaLinkedin,
+  facebook: FaFacebook,
+} as const;
+export type Icons = keyof typeof icons;
+
+type Props = {
+  name: Icons;
+  size?: VariantProps<typeof icon>["size"];
+};
+
+const { name, size } = Astro.props;
+const Icon = icons[name];
+---
+
+<div class={icon({ size })}>
+  <Icon />
+</div>

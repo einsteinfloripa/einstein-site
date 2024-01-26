@@ -1,11 +1,16 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "/home/vianaz/trabalhos/einstein/einstein-site",
     "paths": {
       "@components/*": [
         "./src/components/*"
       ],
-    }
+      "@layouts/*": [
+        "./src/layouts/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

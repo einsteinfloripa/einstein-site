@@ -1,0 +1,22 @@
+---
+import { tv, type VariantProps } from "tailwind-variants";
+const text = tv({
+  base: "font-roboto",
+  variants: {
+    color: {
+      primary: "text-primary",
+    },
+  },
+  defaultVariants: {
+    color: "primary",
+  },
+});
+
+type Props = VariantProps<typeof text>;
+
+const { color } = Astro.props;
+---
+
+<p class={text({ color })}>
+  <slot />
+</p>
