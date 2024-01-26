@@ -6,7 +6,7 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
-      backgroundImage: (theme) => ({
+      backgroundImage: () => ({
         "hero-pattern": "url('/images/Somos-o-Einstein-Floripa.jpg')",
         "aboutbg-pattern": "url('/images/bgabout.jpg')",
         "about-pattern": "url('/images/sobre-nos.jpg')",
