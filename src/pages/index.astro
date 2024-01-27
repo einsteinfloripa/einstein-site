@@ -1,9 +1,61 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "@layouts/Footer/index.astro";
+import Container from "@components/Container/index.astro";
+import Text from "@components/Text/index.astro";
+
+import urlJoin from "url-join";
+
+// TODO: mover isso talvez para um arquivo de configuração
+const partnerships = [
+  {
+    url: "https://www.pipefy.com/pt-br/",
+    image: "pipefy.png",
+  },
+  {
+    url: "https://www.instagram.com/thefejasfactory/",
+    image: "fejas.png",
+  },
+  {
+    url: "https://www.moochacho.com.br/",
+    image: "moochacho.png",
+  },
+  {
+    url: "https://www.instagram.com/coxitosoficial/",
+    image: "coxitos.png",
+  },
+  {
+    url: "https://www.instagram.com/bolodasamigasfloripa/",
+    image: "bolo-das-amigas.png",
+  },
+  {
+    url: "https://www.instagram.com/mugelatofloripa",
+    image: "mugelato.png",
+  },
+  {
+    url: "https://www.instagram.com/inventochocolates",
+    image: "invento.png",
+  },
+] as const;
+
+const buildImageUrl = (url: string) =>
+  urlJoin(import.meta.env.ASSETS_BASE_URL, "parcerias", url);
 ---
 
-<Layout title='Welcome to Astro.'>
+<Layout title='Einstein Floripa'>
+  <Container class='bg-blue-50 gap-10 py-10' direction='column' justify='center' align="center">
+    <Text class='text-center' size='title'>Empresas parceiras</Text>
+    {/* TODO: trocar esse lg:flex-rom para se tornar responsivo via propos talvez usando o tv, olhar: https://www.tailwind-variants.org/docs/getting-started#responsive-variants-usage */}
+    <Container class='bg-white w-fit gap-12 p-20 rounded-lg lg:flex-row items-center py-10' direction="column">
+      {
+        partnerships.map(({ image, url }) => (
+          <a href={url} target='_blank'>
+            <img src={buildImageUrl(image).toString()} class='w-28' />
+          </a>
+        ))
+      }
+    </Container>
+  </Container>
   <Footer />
 </Layout>
 

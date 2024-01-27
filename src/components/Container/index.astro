@@ -1,0 +1,10 @@
+---
+import { container, type ContainerStyle } from "./style";
+
+type Props = ContainerStyle;
+const props = Astro.props;
+---
+
+<div class={container({ ...props })}>
+  <slot />
+</div>
