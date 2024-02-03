@@ -1,0 +1,93 @@
+---
+import type { Icons } from "@components/Icon/index.astro";
+import Text from "@components/Text/index.astro";
+import Icon from "@components/Icon/index.astro";
+import Link from "@components/Link/index.astro";
+
+// TODO: Talvez mudar isso para um arquivo próprio seja melhor, talvez um arquivo de configuração, como json, ou arquivo no mesmo nível desse diretório, como constants.ts
+// Afim de deixar mais limpo esse código, separando as responsabilidades, meio vibe MVC
+type Option = {
+  label: string;
+  href: string;
+};
+const footerOptions: Option[] = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Sobre o Einstein",
+    href: "/sobre",
+  },
+  {
+    label: "Nossa equipe",
+    href: "/equipe",
+  },
+  {
+    label: "Processo seletivo",
+    href: "/processo",
+  },
+  {
+    label: "Resultados",
+    href: "/resultados",
+  },
+  {
+    label: "Apoie",
+    href: "/apoie",
+  },
+];
+
+type Contact = {
+  href: string;
+  icon: Icons;
+};
+const contacts: Contact[] = [
+  {
+    href: import.meta.env.INSTAGRAM_URL,
+    icon: "instagram",
+  },
+  {
+    href: import.meta.env.FACEBOOK_URL,
+    icon: "facebook",
+  },
+  {
+    href: import.meta.env.LINKEDIN_URL,
+    icon: "linkedin",
+  },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class='relative bottom-0 flex flex-col flex-wrap items-center justify-center h-72 gap-10'
+>
+  <!-- Opções de navegação -->
+  <ul class='flex flex-wrap gap-5 justify-center'>
+    {
+      footerOptions.map(({ href, label }) => (
+        <li>
+          <Link href={href}>{label}</Link>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- Icones -->
+  <ul class='flex gap-5'>
+    {
+      contacts.map(({ href, icon }) => (
+        <li>
+          <Link href={href} target='_blank'>
+            <Icon name={icon} />
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- Data -->
+  <Text>
+    {`© ${currentYear} Einstein Floripa`}
+  </Text>
+</footer>

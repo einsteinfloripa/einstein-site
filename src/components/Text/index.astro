@@ -1,0 +1,11 @@
+---
+import { text, type TextProps } from "./style";
+
+type Props = TextProps;
+
+const { color } = Astro.props;
+---
+
+<p class={text({ color })}>
+  <slot />
+</p>

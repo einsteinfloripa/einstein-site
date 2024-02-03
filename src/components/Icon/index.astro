@@ -1,0 +1,24 @@
+---
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { type IconStyles, icon } from "./style";
+
+// TODO: Talvez seja uma boa mover isso para um arquivo constansts.ts no mesmo nível desse diretório
+// Afim de deixar mais limpo esse código, separando as responsabilidades, meio vibe MVC
+const icons = {
+  instagram: FaInstagram,
+  linkedin: FaLinkedin,
+  facebook: FaFacebook,
+} as const;
+export type Icons = keyof typeof icons;
+
+type Props = {
+  name: Icons;
+  size?: IconStyles["size"];
+};
+const { name, size } = Astro.props;
+const Icon = icons[name];
+---
+
+<div class={icon({ size })}>
+  <Icon />
+</div>
