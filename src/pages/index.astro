@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Footer from "@layouts/Footer/index.astro";
 import Container from "@components/Container/index.astro";
 import Text from "@components/Text/index.astro";
+import CountUp from "@components/CountUp";
 
 import urlJoin from "url-join";
 
@@ -73,11 +74,24 @@ const buildImageUrl = (url: string) =>
           <Container class='gap-10' justify='center' align='center'>
             {ourHit.slice(start, end).map(({ title, subtitle }, index, row) => {
               const isLast = index === row.length - 1;
+              const preffix = title.slice(0, 1);
+              const value = parseInt(title.slice(1));
+              // Valida se é um número ou não, se não for, é adicionado como sufixo
+              const suffix = Number(title.slice(-1))
+                ? undefined
+                : title.slice(-1);
+
               return (
                 <Fragment>
                   <Container class='gap-2' direction='column' align='center'>
                     <Text class='text-white text-center' size='title'>
-                      {title}
+                      <CountUp
+                        start={0}
+                        end={value}
+                        prefix={preffix}
+                        suffix={suffix}
+                        client:load
+                      />
                     </Text>
                     <Text class='text-white font-normal text-2xl text-center'>
                       {subtitle}
