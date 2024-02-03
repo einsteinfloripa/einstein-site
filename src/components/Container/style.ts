@@ -16,6 +16,7 @@ export const container = tv({
       end: "justify-end",
       between: "justify-between",
       around: "justify-around",
+      evenly: "justify-evenly",
     },
     align: {
       start: "items-start",

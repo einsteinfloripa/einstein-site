@@ -7,7 +7,9 @@ export const text = tv({
       primary: "text-primary",
     },
     size: {
-      title: "text-3xl",
+      "small-title": "text-3xl",
+      title: "text-5xl",
+      "super-title": "text-7xl",
     },
   },
   defaultVariants: {
@@ -15,8 +17,16 @@ export const text = tv({
   },
   compoundVariants: [
     {
-      size: "title",
+      size: "small-title",
       class: "font-bold",
+    },
+    {
+      size: "title",
+      class: "font-extrabold",
+    },
+    {
+      size: "super-title",
+      class: "font-extrabold",
     },
   ],
 });
