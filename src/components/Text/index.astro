@@ -3,9 +3,9 @@ import { text, type TextProps } from "./style";
 
 type Props = TextProps;
 
-const { color } = Astro.props;
+const props = Astro.props;
 ---
 
-<p class={text({ color })}>
+<p class={text({ ...props })}>
   <slot />
 </p>
