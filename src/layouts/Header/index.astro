@@ -1,0 +1,14 @@
+---
+import Footer from "@layouts/Footer/index.astro";
+import footerOptions from '@layouts/assets/options.json'
+import style from '@layouts/Header/provisorio.css'
+---
+<header class="h-xl">
+    <ul class='flex flex-wrap gap-5 justify-center bg-blue-900 h-500'>
+        {footerOptions.map(option => (
+          <li>
+            <a href={option.href} class="text-white text border-2 rounded-md border-white">{option.label}</a>
+          </li>
+        ))}
+      </ul>
+</header>o
